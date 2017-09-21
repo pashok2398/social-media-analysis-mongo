@@ -7,6 +7,7 @@ node ('beaware-jenkins-slave') {
 
     stage ('Build docker image') {
         //sh 'mvn clean install'
+		sh 'docker pull dockerfile/ubuntu'
         sh 'docker build -t beaware/social-media-analysis-mongo .'
     }
 
