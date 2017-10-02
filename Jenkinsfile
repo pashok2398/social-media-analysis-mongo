@@ -7,8 +7,6 @@ node ('beaware-jenkins-slave') {
 
     stage ('Build docker image') {
         //sh 'mvn clean install'
-		sh 'docker build -t="dockerfile/ubuntu" github.com/dockerfile/ubuntu'
-		sh 'docker run --rm dockerfile/ubuntu'
         sh 'docker build -t beaware/social-media-analysis-mongo .'
     }
 
@@ -21,9 +19,9 @@ node ('beaware-jenkins-slave') {
     stage ('Deploy') {
         sh 'kubectl apply -f kubernetes/deploy.yaml -n prod --validate=false'
     }
-    
+
     stage ('Print-deploy logs') {
         sh 'sleep 60'
         sh 'kubectl  -n prod logs deploy/social-media-analysis-mongo -c social-media-analysis-mongo'
-    }    
+    }
 }

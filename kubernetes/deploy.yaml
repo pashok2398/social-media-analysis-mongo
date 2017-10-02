@@ -21,11 +21,11 @@ spec:
         app: social-media-analysis-mongo
     spec:
       containers:
-      - image: beaware-project/social-media-analysis-mongo
+      - image: beaware/social-media-analysis-mongo
         imagePullPolicy: Always
         name: social-media-analysis-mongo
         ports:
-        - containerPort: 80
+        - containerPort: 27017
           name: http
           protocol: TCP
         resources:
